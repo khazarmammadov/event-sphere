@@ -1,0 +1,35 @@
+server:
+  port: 8085
+spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          google:
+#            client-id: 700124125511-sq3jaor4n9la5scvektumcggtgphbtkc.apps.googleusercontent.com
+#            client-secret: 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
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+
+    driver-class-name: org.postgresql.Driver
+    username: user_eventsphere
+    password: event123
+    url: jdbc:postgresql://localhost:5432/eventsphere
+
+token:
+  secret:
+    key: MIHcAgEBBEIBQmGNykSJwBz4Vv3Z9W6yIY9ogX+srFSu17SFzq+UTRVhLdG/k/a8YT2R9yInggtaCkPiR10Ab0u1VaAXVWl/iG6gBwYFK4EEACOhgYkDgYYABAGpXsXwoCQxut765nPmagJ7KCVM/pHi/1/+kGFkg4fgepHCx5RZ8aST/+KQo9zxtvo6DQP+oFfd9XSha8m5UKsf7ADe+rhL416I4SLvzdeg7jGnXCmHpNC2o41Olsga/ra7JqRfy5oNNYDdlFM3XVHBrbCylHwqWyrpCFx1/VaSggSzCQ==
+  expirationms: 36000
+springdoc:
+  swagger-ui:
+    path: /docs/swagger-ui.html
+  api-docs:
+    path: /docs/api-docs
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
