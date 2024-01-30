@@ -18,7 +18,7 @@ public interface EventMapper {
     @AfterMapping
     default void afterMap(EventDetailsResponse result, Event entity) {
         String sellingPeriod = entity.getTicketSellingStartDate().toString() +
-                " - " + entity.getTicketSellingStopDate().toString();
+                " -> " + entity.getTicketSellingStopDate().toString();
         result.setTicketSellingPeriod(sellingPeriod);
     }
 
