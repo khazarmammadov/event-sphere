@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
-    List<Event> getEventByStatus(EventStatus status);
+
+    List<Event> findAllByStatus(EventStatus status);
 
 }

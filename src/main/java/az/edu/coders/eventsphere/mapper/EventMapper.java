@@ -3,6 +3,7 @@ package az.edu.coders.eventsphere.mapper;
 import az.edu.coders.eventsphere.dto.request.CreatedEventRequest;
 import az.edu.coders.eventsphere.dto.request.UpdatedEventRequest;
 import az.edu.coders.eventsphere.dto.response.EventDetailsResponse;
+import az.edu.coders.eventsphere.dto.response.EventResponse;
 import az.edu.coders.eventsphere.entity.Event;
 import org.mapstruct.*;
 
@@ -33,4 +34,5 @@ public interface EventMapper {
 
     }
 
+    EventResponse toEventResponse(Event event);
 }
