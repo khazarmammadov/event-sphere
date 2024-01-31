@@ -17,6 +17,7 @@ public class CreatedEventRequest {
     private LocalDate eventDate;
     private LocalDateTime eventTime;
     private int restOfPlace;
+    private double ticketPrice;
     private LocalDate ticketSellingStartDate;
     private LocalDate ticketSellingStopDate;
 

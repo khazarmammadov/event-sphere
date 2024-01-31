@@ -6,8 +6,9 @@ import lombok.Data;
 public class EventDetailsResponse {
     private String name;
     private String description;
-    private String picturePath;
     private String location;
-    private String ticketSellingPeriod;
     private double ticketPrice;
+    private String eventDateAndTime;
+    private String ticketSellingPeriod;
+    private String picturePath;
 }

@@ -6,6 +6,8 @@ import az.edu.coders.eventsphere.dto.response.EventDetailsResponse;
 import az.edu.coders.eventsphere.entity.Event;
 import org.mapstruct.*;
 
+import java.time.format.DateTimeFormatter;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface EventMapper {
 
@@ -15,11 +17,17 @@ public interface EventMapper {
 
     EventDetailsResponse toEventDetailsResponse(Event entity);
 
-    @AfterMapping
-    default void afterMap(EventDetailsResponse result, Event entity) {
+    default EventDetailsResponse afterMap(EventDetailsResponse result, Event entity) {
         String sellingPeriod = entity.getTicketSellingStartDate().toString() +
                 " --> " + entity.getTicketSellingStopDate().toString();
         result.setTicketSellingPeriod(sellingPeriod);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = entity.getEventTime().format(formatter);
+
+        result.setEventDateAndTime(formattedDateTime);
+
+        return result;
     }
 
 }
