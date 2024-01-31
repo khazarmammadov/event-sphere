@@ -11,13 +11,16 @@ import java.time.format.DateTimeFormatter;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface EventMapper {
 
+    @Mapping(target = "createdAt", expression = "java(java.time.LocalDate.now())")
+    @Mapping(target = "status" , expression = "java(az.edu.coders.eventsphere.enumurated.EventStatus.DRAFT)")
     Event toEntity(CreatedEventRequest request);
 
     void updateEntity(@MappingTarget Event entity, UpdatedEventRequest request);
 
     EventDetailsResponse toEventDetailsResponse(Event entity);
 
-    default EventDetailsResponse afterMap(EventDetailsResponse result, Event entity) {
+    @AfterMapping
+    default void afterMap(@MappingTarget EventDetailsResponse result, Event entity) {
         String sellingPeriod = entity.getTicketSellingStartDate().toString() +
                 " --> " + entity.getTicketSellingStopDate().toString();
         result.setTicketSellingPeriod(sellingPeriod);
@@ -27,7 +30,7 @@ public interface EventMapper {
 
         result.setEventDateAndTime(formattedDateTime);
 
-        return result;
+
     }
 
 }

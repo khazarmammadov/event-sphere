@@ -41,7 +41,7 @@ public class EventService {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + id));
 
-        return eventMapper.afterMap(eventMapper.toEventDetailsResponse(event), event);
+        return eventMapper.toEventDetailsResponse(event);
     }
 
 
