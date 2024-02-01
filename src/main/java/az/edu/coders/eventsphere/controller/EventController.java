@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.controller;
 
 import az.edu.coders.eventsphere.dto.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.dto.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.dto.request.UpdatedEventRequest;
 import az.edu.coders.eventsphere.dto.response.EventDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.EventResponse;
@@ -35,6 +36,12 @@ public class EventController {
     public List<EventResponse> getEventByStatus(@RequestParam EventStatus status) {
         return eventService.getEventByStatus(status);
     }
+
+    @PostMapping("/transaction")
+    public void getDetailsById(@RequestBody CreatedTransactionRequest request) {
+        eventService.createTransaction(request);
+    }
+
 
     @PutMapping("/{id}")
     public void updateEvent(@PathVariable Long id, @RequestBody UpdatedEventRequest request) {

@@ -19,4 +19,9 @@ public class CustomerService {
 
         customerRepository.save(customer);
     }
+
+    public Customer getEntityById(Long customerId) {
+       return customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found given by id: " + customerId));
+    }
 }

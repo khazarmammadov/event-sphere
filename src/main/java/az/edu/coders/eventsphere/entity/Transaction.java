@@ -20,13 +20,13 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "customer_id", unique = true)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
     @ManyToOne
-    @JoinColumn(name = "event_id", unique = true)
+    @JoinColumn(name = "event_id")
     private Event event;
     private Long quantity;
-    private Long totalPrice;
+    private double totalPrice;
     @OneToOne
     @JoinColumn(name = "billing_details_id", unique = true)
     private BillingDetails billingDetails;

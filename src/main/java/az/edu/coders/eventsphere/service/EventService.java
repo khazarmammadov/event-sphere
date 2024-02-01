@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.dto.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.dto.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.dto.request.UpdatedEventRequest;
 import az.edu.coders.eventsphere.dto.response.EventDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.EventResponse;
@@ -20,6 +21,7 @@ public class EventService {
 
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
+    private final TransactionService transactionService;
 
     public void saveEvent(CreatedEventRequest request) {
         Event event = eventMapper.toEntity(request);
@@ -57,4 +59,10 @@ public class EventService {
     }
 
 
+    public void createTransaction(CreatedTransactionRequest request) {
+        Event event = eventRepository.findById(request.getEventId())
+                .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + request.getEventId()));
+
+        transactionService.createTransaction(event, request);
+    }
 }

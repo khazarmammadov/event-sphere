@@ -5,12 +5,12 @@ import az.edu.coders.eventsphere.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/events")
+@RequestMapping("/customer")
 @RequiredArgsConstructor
 @Controller
 public class CustomerController {
@@ -18,7 +18,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public void saveCustomer(@RequestParam CreatedCustomerRequest request) {
+    public void saveCustomer(@RequestBody CreatedCustomerRequest request) {
         customerService.saveCustomer(request);
     }
 }

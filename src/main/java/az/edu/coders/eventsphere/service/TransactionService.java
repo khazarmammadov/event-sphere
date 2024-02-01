@@ -1,6 +1,8 @@
 package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.dto.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.entity.Customer;
+import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Transaction;
 import az.edu.coders.eventsphere.mapper.TransactionMapper;
 import az.edu.coders.eventsphere.repository.TransactionRepository;
@@ -13,12 +15,16 @@ public class TransactionService {
 
     private final TransactionRepository transactionRepository;
     private final TransactionMapper transactionMapper;
-    private final EventService eventService;
+    private final CustomerService customerService;
 
-//    public Transaction createTransaction(CreatedTransactionRequest request) {
-//        Transaction transaction = transactionMapper.toEntity(request);
-//        transaction = transactionMapper.toEntity(eventService.getDetailsById(request.getEventId()))
-//        return transactionRepository.save(transaction);
-//    }
+    public void createTransaction(Event event, CreatedTransactionRequest request) {
+        Customer customer = customerService.getEntityById(request.getCustomerId());
+        Transaction transaction = transactionMapper.toEntity(request);
+        double totalPrice = event.getTicketPrice() * request.getQuantity();
+        transaction.setTotalPrice(totalPrice);
+        transaction.setEvent(event);
+        transaction.setCustomer(customer);
+        transactionRepository.save(transaction);
+    }
 
 }

@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/transactions")
 @RequiredArgsConstructor
 public class TransactionController {
 
     private final TransactionService transactionService;
 
-    @PostMapping
-    public Transaction saveTransaction(@RequestBody CreatedTransactionRequest request) {
-        return transactionService.saveTransaction(request);
-    }
+//    @PostMapping
+//    public Transaction saveTransaction(@RequestBody CreatedTransactionRequest request) {
+//        return transactionService.saveTransaction(request);
+//    }
+
+//    @PostMapping()
+//    public void getDetailsById(@RequestBody CreatedTransactionRequest request) {
+//        transactionService.createTransaction(request);
+//    }
 }
