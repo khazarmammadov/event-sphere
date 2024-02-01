@@ -4,6 +4,7 @@ import az.edu.coders.eventsphere.dto.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Transaction;
+import az.edu.coders.eventsphere.enumurated.PaymentStatus;
 import az.edu.coders.eventsphere.mapper.TransactionMapper;
 import az.edu.coders.eventsphere.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;

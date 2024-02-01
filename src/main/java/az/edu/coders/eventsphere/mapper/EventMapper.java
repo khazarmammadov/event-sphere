@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 public interface EventMapper {
 
     @Mapping(target = "createdAt", expression = "java(java.time.LocalDate.now())")
-    @Mapping(target = "status" , expression = "java(az.edu.coders.eventsphere.enumurated.EventStatus.DRAFT)")
+    @Mapping(target = "status", expression = "java(az.edu.coders.eventsphere.enumurated.EventStatus.DRAFT)")
     Event toEntity(CreatedEventRequest request);
 
     void updateEntity(@MappingTarget Event entity, UpdatedEventRequest request);
