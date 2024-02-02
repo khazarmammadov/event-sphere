@@ -8,6 +8,7 @@ import az.edu.coders.eventsphere.dto.response.EventResponse;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import az.edu.coders.eventsphere.service.EventService;
+import az.edu.coders.eventsphere.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.List;
 public class EventController {
 
     private final EventService eventService;
+    private final TransactionService transactionService;
 
     @PostMapping
     public void saveEvent(@RequestBody CreatedEventRequest request) {
@@ -38,8 +40,8 @@ public class EventController {
     }
 
     @PostMapping("/transaction")
-    public void getDetailsById(@RequestBody CreatedTransactionRequest request) {
-        eventService.createTransaction(request);
+    public void createTransaction(@RequestBody CreatedTransactionRequest request) {
+        transactionService.createTransaction(request);
     }
 
 

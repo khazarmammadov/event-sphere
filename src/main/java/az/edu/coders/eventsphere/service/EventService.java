@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,7 +22,6 @@ public class EventService {
 
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
-    private final TransactionService transactionService;
 
     public void saveEvent(CreatedEventRequest request) {
         Event event = eventMapper.toEntity(request);
@@ -58,11 +58,18 @@ public class EventService {
         return eventMapper.toEventDetailsResponse(event);
     }
 
+    public Event getEntityById(Long id) {
+        return eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + id));
+    }
 
-    public void createTransaction(CreatedTransactionRequest request) {
-        Event event = eventRepository.findById(request.getEventId())
-                .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + request.getEventId()));
 
-        transactionService.createTransaction(event, request);
+
+
+    public void updateRestOfPlace(Long id,int updatedPlaces) {
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + id));
+        event.setRestOfPlace(updatedPlaces);
+        eventRepository.save(event);
     }
 }

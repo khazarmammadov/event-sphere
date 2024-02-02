@@ -25,7 +25,7 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
-    private Long quantity;
+    private int quantity;
     private double totalPrice;
     @OneToOne
     @JoinColumn(name = "billing_details_id", unique = true)

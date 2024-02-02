@@ -16,7 +16,7 @@ public class CreatedTransactionRequest {
 
     private Long eventId;
 
-    private Long quantity;
+    private int quantity;
 
 
 

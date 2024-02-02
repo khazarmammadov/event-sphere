@@ -18,21 +18,33 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final TransactionMapper transactionMapper;
     private final CustomerService customerService;
+    private final EventService eventService;
 
-    public void createTransaction(Event event, CreatedTransactionRequest request) {
-        Customer customer = customerService.getEntityById(request.getCustomerId());
-        Transaction transaction = transactionMapper.toEntity(request);
-        double totalPrice = event.getTicketPrice() * request.getQuantity();
-        transaction.setTotalPrice(totalPrice);
-        transaction.setEvent(event);
-        transaction.setCustomer(customer);
-        transactionRepository.save(transaction);
+    public void createTransaction(CreatedTransactionRequest request) {
+
+        Event event = eventService.getEntityById(request.getEventId());
+
+        if (!(request.getQuantity() > event.getRestOfPlace())) {
+            Customer customer = customerService.getEntityById(request.getCustomerId());
+            Transaction transaction = transactionMapper.toEntity(request);
+            double totalPrice = event.getTicketPrice() * request.getQuantity();
+            transaction.setTotalPrice(totalPrice);
+            transaction.setEvent(event);
+            transaction.setCustomer(customer);
+            transactionRepository.save(transaction);
+            int updatedPlaces = event.getRestOfPlace() - request.getQuantity();
+            eventService.updateRestOfPlace(event.getId(), updatedPlaces);
+        } else {
+            throw new RuntimeException("Rest of place is: " + event.getRestOfPlace());
+        }
     }
 
     public void updateTransaction(Long id, UpdatedTransactionRequest request) {
         Transaction transaction = transactionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + id));
         transactionMapper.updateEntity(transaction, request);
+        transactionRepository.save(transaction);
     }
+
 
 }

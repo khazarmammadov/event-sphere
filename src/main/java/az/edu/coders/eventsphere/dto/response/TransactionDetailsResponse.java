@@ -10,7 +10,7 @@ public class TransactionDetailsResponse {
     private String customerName;
     private String email;
     private Long eventId;
-    private Long quantity;
+    private int quantity;
     private double totalPrice;
     private String eventName;
     private String description;
