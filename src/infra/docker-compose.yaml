@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=event-sphere
+      - POSTGRES_USER=event
+      - POSTGRES_PASSWORD=event5
+    ports:
+      - 5432:5432
