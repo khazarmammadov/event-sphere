@@ -3,7 +3,7 @@ package az.edu.coders.eventsphere.dto.response;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
+
 @Data
 public class CustomerResponse {
 

@@ -42,12 +42,11 @@ public class EventService {
         eventRepository.save(event);
     }
 
-    public List<EventResponse> getEventByStatus(EventStatus status) {
+    public List<EventDetailsResponse> getEventByStatus(EventStatus status) {
         List<Event> eventList = eventRepository.findAllByStatus(status);
 
         return eventList.stream()
-                .map(eventMapper::toEventResponse)
-                .collect(Collectors.toList());
+                .map(eventMapper::toEventDetailsResponse).collect(Collectors.toList());
 
     }
 

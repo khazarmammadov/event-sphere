@@ -35,7 +35,7 @@ public class EventController {
     }
 
     @GetMapping()
-    public List<EventResponse> getEventByStatus(@RequestParam EventStatus status) {
+    public List<EventDetailsResponse> getEventByStatus(@RequestParam EventStatus status) {
         return eventService.getEventByStatus(status);
     }
 

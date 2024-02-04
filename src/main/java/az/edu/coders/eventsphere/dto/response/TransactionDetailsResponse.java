@@ -1,10 +1,8 @@
 package az.edu.coders.eventsphere.dto.response;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class TransactionDetailsResponse {
 
     private String customerName;
