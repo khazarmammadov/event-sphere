@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 
 @Data
 public class CustomerResponse {
@@ -13,6 +15,6 @@ public class CustomerResponse {
     private String profilePicturePath;
     private String fullName;
     private String email;
-    private String registerDate;
+    private LocalDate registerDate;
 
 }

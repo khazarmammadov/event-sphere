@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
 
+import java.time.LocalDate;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CustomerMapper {
 
@@ -21,6 +23,7 @@ public interface CustomerMapper {
         result.setCustomerId(entity.getId());
         result.setProfilePicturePath(entity.getPicturePath());
         result.setFullName(entity.getFirstName() + " " + entity.getLastName());
+        result.setRegisterDate(LocalDate.now());
 
     }
 }
