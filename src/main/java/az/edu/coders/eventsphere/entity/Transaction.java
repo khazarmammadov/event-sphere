@@ -27,9 +27,6 @@ public class Transaction {
     private Event event;
     private int quantity;
     private double totalPrice;
-    @OneToOne
-    @JoinColumn(name = "billing_details_id", unique = true)
-    private BillingDetails billingDetails;
     @Enumerated(EnumType.ORDINAL)
     private PaymentStatus status;
     private LocalDateTime transactionDate;

@@ -3,6 +3,8 @@ package az.edu.coders.eventsphere.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -25,4 +27,5 @@ public class Customer {
     private String phone_number;
     private String address;
     private String picturePath;
+    private LocalDate registeredDate;
 }

@@ -1,18 +1,17 @@
 package az.edu.coders.eventsphere.mapper;
 
 import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.dto.response.CustomerDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerResponse;
 import az.edu.coders.eventsphere.entity.Customer;
-import org.mapstruct.AfterMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 import java.time.LocalDate;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CustomerMapper {
 
+    @Mapping(target = "registeredDate", expression = "java(java.time.LocalDate.now())")
     Customer toEntity(CreatedCustomerRequest request);
 
     CustomerResponse toCustomerResponse(Customer customer);
@@ -26,4 +25,6 @@ public interface CustomerMapper {
         result.setRegisterDate(LocalDate.now());
 
     }
+
+    CustomerDetailsResponse toCustomerDetailsResponse(Customer customer);
 }

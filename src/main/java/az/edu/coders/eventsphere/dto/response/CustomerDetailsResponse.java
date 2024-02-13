@@ -1,17 +1,15 @@
-package az.edu.coders.eventsphere.dto.request;
+package az.edu.coders.eventsphere.dto.response;
 
-import az.edu.coders.eventsphere.entity.User;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
-public class CreatedCustomerRequest {
+public class CustomerDetailsResponse {
 
+
+    private Long id;
+    private Long createdBy;
     private String firstName;
     private String lastName;
     private String email;

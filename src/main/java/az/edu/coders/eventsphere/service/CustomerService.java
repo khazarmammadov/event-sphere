@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.dto.response.CustomerDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerResponse;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.mapper.CustomerMapper;
@@ -8,6 +9,7 @@ import az.edu.coders.eventsphere.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,5 +38,11 @@ public class CustomerService {
                 .map(customerMapper::toCustomerResponse).collect(Collectors.toList());
 
 
+    }
+
+    public CustomerDetailsResponse getCustomerById(Long customerId) {
+        Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new RuntimeException("Customer not found given by id: " + customerId));
+
+        return customerMapper.toCustomerDetailsResponse(customer);
     }
 }

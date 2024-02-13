@@ -6,7 +6,6 @@ import az.edu.coders.eventsphere.dto.response.TransactionDetailsResponse;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Transaction;
-import az.edu.coders.eventsphere.enumurated.PaymentStatus;
 import az.edu.coders.eventsphere.mapper.TransactionMapper;
 import az.edu.coders.eventsphere.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +23,9 @@ public class TransactionService {
     private final CustomerService customerService;
     private final EventService eventService;
 
+
+
+
     public void createTransaction(CreatedTransactionRequest request) {
 
         Event event = eventService.getEntityById(request.getEventId());
@@ -38,6 +40,8 @@ public class TransactionService {
             transactionRepository.save(transaction);
             int updatedPlaces = event.getRestOfPlace() - request.getQuantity();
             eventService.updateRestOfPlace(event.getId(), updatedPlaces);
+
+
         } else {
             throw new RuntimeException("Rest of place is: " + event.getRestOfPlace());
         }

@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.controller;
 
 import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.dto.response.CustomerDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerResponse;
 import az.edu.coders.eventsphere.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -26,4 +27,12 @@ public class CustomerController {
     public List<CustomerResponse> getAllCustomers() {
         return customerService.getAllCustomers();
     }
+
+    @GetMapping("/{id}")
+    public CustomerDetailsResponse getCustomerById(@PathVariable Long id) {
+        return customerService.getCustomerById(id);
+    }
+
+//    @GetMapping()
+//    public List<CustomerTransactionResponse> getTransactionList()
 }
