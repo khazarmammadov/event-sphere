@@ -2,6 +2,7 @@ package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.dto.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.dto.request.UpdatedTransactionRequest;
+import az.edu.coders.eventsphere.dto.response.CustomerTransactionResponse;
 import az.edu.coders.eventsphere.dto.response.TransactionDetailsResponse;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.entity.Event;
@@ -22,8 +23,6 @@ public class TransactionService {
     private final TransactionMapper transactionMapper;
     private final CustomerService customerService;
     private final EventService eventService;
-
-
 
 
     public void createTransaction(CreatedTransactionRequest request) {
@@ -71,5 +70,13 @@ public class TransactionService {
 
         return transactionList.stream()
                 .map(transactionMapper::toTransactionDetailsResponse).collect(Collectors.toList());
+    }
+
+    public List<CustomerTransactionResponse> getCustomerTransactionList(Long id) {
+        List<Transaction> transactionList = transactionRepository.getAllByCustomerId(id);
+
+        return transactionList.stream()
+                .map(transactionMapper::toCustomerTransactionResponse)
+                .collect(Collectors.toList());
     }
 }
