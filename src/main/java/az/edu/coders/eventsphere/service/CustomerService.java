@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.dto.request.UpdateCustomerRequest;
 import az.edu.coders.eventsphere.dto.response.CustomerDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerTransactionResponse;
@@ -48,4 +49,10 @@ public class CustomerService {
         return customerMapper.toCustomerDetailsResponse(customer);
     }
 
+    public void editCustomer(Long id, UpdateCustomerRequest request) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found given by id: " + id));
+        customerMapper.toUpdateCustomerRequest(request, customer);
+        customerRepository.save(customer);
+    }
 }

@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.mapper;
 
 import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.dto.request.UpdateCustomerRequest;
 import az.edu.coders.eventsphere.dto.response.CustomerDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerResponse;
 import az.edu.coders.eventsphere.entity.Customer;
@@ -27,4 +28,6 @@ public interface CustomerMapper {
     }
 
     CustomerDetailsResponse toCustomerDetailsResponse(Customer customer);
+
+    void toUpdateCustomerRequest(UpdateCustomerRequest request, @MappingTarget Customer entity);
 }

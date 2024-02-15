@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.controller;
 
 import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.dto.request.UpdateCustomerRequest;
 import az.edu.coders.eventsphere.dto.response.CustomerDetailsResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerResponse;
 import az.edu.coders.eventsphere.dto.response.CustomerTransactionResponse;
@@ -39,5 +40,10 @@ public class CustomerController {
     @GetMapping("/{id}/transactions")
     public List<CustomerTransactionResponse> getTransactionList(@PathVariable Long id) {
         return transactionService.getCustomerTransactionList(id);
+    }
+
+    @PutMapping("/{id}")
+    public void editCustomer(@PathVariable Long id, @RequestBody UpdateCustomerRequest request) {
+        customerService.editCustomer(id, request);
     }
 }
