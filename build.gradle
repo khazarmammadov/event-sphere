@@ -4,6 +4,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.4'
 }
 
+
 group = 'az.edu.coders'
 version = '0.0.1-SNAPSHOT'
 
@@ -36,7 +37,21 @@ dependencies {
 
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+ext {
+	jjwtVersion = '0.11.5'
 }
+
+dependencies {
+	implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
+	implementation "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
+	implementation "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
+}
+
+
+
+
+
+//tasks.named('test') {
+//	useJUnitPlatform()
+//}
 
