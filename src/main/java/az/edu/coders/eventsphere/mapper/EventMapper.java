@@ -1,9 +1,9 @@
 package az.edu.coders.eventsphere.mapper;
 
-import az.edu.coders.eventsphere.dto.request.CreatedEventRequest;
-import az.edu.coders.eventsphere.dto.request.UpdatedEventRequest;
-import az.edu.coders.eventsphere.dto.response.EventDetailsResponse;
-import az.edu.coders.eventsphere.dto.response.EventResponse;
+import az.edu.coders.eventsphere.model.dto.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.model.dto.request.UpdatedEventRequest;
+import az.edu.coders.eventsphere.model.dto.response.EventDetailsResponse;
+import az.edu.coders.eventsphere.model.dto.response.EventResponse;
 import az.edu.coders.eventsphere.entity.Event;
 import org.mapstruct.*;
 

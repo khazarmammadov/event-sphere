@@ -1,6 +1,6 @@
 package az.edu.coders.eventsphere.mapper;
 
-import az.edu.coders.eventsphere.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.model.dto.request.CreatedCustomerRequest;
 import az.edu.coders.eventsphere.entity.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

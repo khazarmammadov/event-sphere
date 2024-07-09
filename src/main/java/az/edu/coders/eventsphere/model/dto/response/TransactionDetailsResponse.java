@@ -1,4 +1,4 @@
-package az.edu.coders.eventsphere.dto.response;
+package az.edu.coders.eventsphere.model.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

@@ -2,6 +2,7 @@ package az.edu.coders.eventsphere.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
 
 @Entity
 @Data
@@ -15,9 +16,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "created_by", unique = true)
+    @JoinColumn(name = "created_by")
     private User user;
+
     private String firstName;
     private String lastName;
     private String email;

@@ -1,11 +1,10 @@
 package az.edu.coders.eventsphere.controller;
 
-import az.edu.coders.eventsphere.dto.request.CreatedEventRequest;
-import az.edu.coders.eventsphere.dto.request.CreatedTransactionRequest;
-import az.edu.coders.eventsphere.dto.request.UpdatedEventRequest;
-import az.edu.coders.eventsphere.dto.response.EventDetailsResponse;
-import az.edu.coders.eventsphere.dto.response.EventResponse;
-import az.edu.coders.eventsphere.entity.Event;
+import az.edu.coders.eventsphere.model.dto.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.model.dto.request.UpdatedEventRequest;
+import az.edu.coders.eventsphere.model.dto.response.EventDetailsResponse;
+import az.edu.coders.eventsphere.model.dto.response.EventResponse;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import az.edu.coders.eventsphere.service.EventService;
 import lombok.RequiredArgsConstructor;
