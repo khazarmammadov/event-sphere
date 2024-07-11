@@ -15,5 +15,4 @@ public class CreatedCustomerRequest {
     private String country;
     private String phone_number;
     private String address;
-    private String picturePath;
 }

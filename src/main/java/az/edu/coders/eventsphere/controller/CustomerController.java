@@ -3,21 +3,21 @@ package az.edu.coders.eventsphere.controller;
 import az.edu.coders.eventsphere.model.dto.request.CreatedCustomerRequest;
 import az.edu.coders.eventsphere.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 @RequiredArgsConstructor
 public class CustomerController {
 
     private final CustomerService customerService;
 
-    @PostMapping
-    public void saveCustomer(@RequestBody CreatedCustomerRequest request) {
-        customerService.saveCustomer(request);
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public void saveCustomer(@RequestPart("data") CreatedCustomerRequest request,
+                             @RequestPart("file") MultipartFile file) {
+        customerService.saveCustomer(request, file);
     }
 }

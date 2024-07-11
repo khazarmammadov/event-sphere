@@ -12,7 +12,6 @@ public class CreatedEventRequest {
     private Long userId;
     private String name;
     private String description;
-    private String picturePath;
     private String location;
     private LocalDate eventDate;
     private LocalDateTime eventTime;

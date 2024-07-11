@@ -7,6 +7,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 public class CreatedUserRequest {
@@ -14,5 +16,6 @@ public class CreatedUserRequest {
     private String surname;
     private String mail;
     private String password;
+    private LocalDateTime createdAt;
 
 }

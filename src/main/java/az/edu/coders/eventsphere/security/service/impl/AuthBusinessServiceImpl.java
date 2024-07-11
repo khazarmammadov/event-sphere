@@ -89,7 +89,7 @@ public class AuthBusinessServiceImpl implements AuthBusinessService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(mail);
 
         SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities())
+                UsernamePasswordAuthenticationToken.authenticated(userDetails, "", userDetails.getAuthorities())
         );
     }
 

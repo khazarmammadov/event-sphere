@@ -14,3 +14,14 @@ security:
     private-key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDXewtO5WVK7DfAro35jQ7Mbgcx3KRhEbT9J9pHkpOX39QfmfRJwOfO3WBGRbaqoHForiKhDBU2hnF9P5LiMFeK7tlMQBKSFOIKFzb+MwOZX/tORyFpSjMkCaU7ij/Lsf2cFwhPNby/33+epbliK3hVuNoHq4nik5vlsx86lqcc/U0UYuNqrz+/uqQANcn9nP0yO3N7/Kynw1khz/9/mamvM1hyiR/XbIUA/C1wuZpPbN1iwLO+xeXF7pplmi7qypoy5mz29EaVfpWub9aTEsApZzUJKWkj2Kzwxr1IDscFwIJ+E76eGNJ/G1u6iXpMNnWkyztdVdxoeknKrPAOKIYjAgMBAAECggEAFsuQfa8s0Qk+OKb+o/i1KRE2t6KkzRQHdoSBxfKOpJFsKk+qFSdQHoUyyxxS36gLd0x8o1bY46TDWsGf80ez6yGrYTKiBEwrQXAFREz3Q4Fw324M7cuIr3ZJwYu1hgH1V07kdSS1LAMjyA+2FdmNaFwezJLsCkkdQ+Z4FkWbtigv+SC1FuusXxL07w6beG76IfM6k5BZ23AlZX9MT+dhR0m+K/7/zU3z3kKXQjhdLX0nOIG1Voqafg1V8TEc8PYSQCCYhMPLLFZAM/uJDXvfgqMi2bSRebxdYuAXNw3M1/5/Rx0Jlp/WH0zShndiVkLCvuqF2QwivSVjCwnAR/FoYQKBgQDdh/joRTlE9mOrdaFzstoRlj5FvvWy2kasmJfU+PjZ/2Zm2r/i7iHQrYADmion7iNrjTruR49ch3/0Q+AGNwc+lyKjVbtFmV2HS0BFfLRCUVEGu+9aR2P1eYiskEfXPp6iVotpm01TdvgJlY8Pqn7T7XyHtNA7aPpdG7b+RbodUwKBgQD5AhGARi9eWF/elSgqKlMqMxvq6XzJlixny4w20H0+9BxaIwX8nSltwT7izTt3CbnRVZSe8Z7+ydRzc4z1Q10IANVzZZ1LRdo24qj5b7FszYoIdaTf/gbJcHezn/82wUkd3sdpJb8/HB3J4Y6HhSJFOzFt2Wk92CuLVXZk7QkJ8QKBgQCXtXN3FVj36kgtdnwfsL74RkzVFMZMOoEl18Y62loJaIdnLq00KmJL91VwohX2jHYDRI+z+JusATtWO1liyDKU4YmeE6sRKctMSPN14sXLmMaFdxSeXb+NrzIzAwe/1ylqARyuMOXOn+2TGrIDR35dggjDIsdruCOkucMi9PtU8wKBgD9mBWqxc/IDcjVLqLRDnnUKGjuPQxRYReoPax2xq5HRuT5B2I5evWOSZh58vn0qXsMrlPF6905LuOnEK8luY0tcWvxMjOXTXSHIR9lqVLQtCM3qlhXpqXS0S+XSALrCL4mJZSAiWjUJRZRW92ENxpH15jnftunmFgAdvE0qBLkhAoGAL2noU91hbEVKgEUh1UiYoe4hXarI0e/EGC/dJocBVIgpAfQ5RB4xUUrEYhxlf2Emq0RusDbWpikAyz4E6r8hdXKI+3be2FjEvQBh4W+llq/+JqCVzLn0+ng61vL01ZWDn6mZZEwpMAg0zgMfj6xmesGnoxpU7qhDHePf7rcur0o=
     access-token-validity-time: 1800000
     refresh-token-validity-time: 86400000
+minio:
+  endpoint: http://127.0.0.1:9000
+  port: 9000
+  accessKey:  kTWX7tmYhopol0jn8MkO #Login Account
+  secretKey:  s0S7brIvYfGLitFrgEyndlhDLo5F9bW8ksWzX4LG # Login Password
+  secure: false
+  bucket-name: event-pictures # Bucket Name
+  image-size: 5368709120 #  Maximum size of picture file
+  file-size: 1073741824 #  Maximum file size
+#  image-size: 10485760 #  Maximum size of picture file
+#  file-size: 1073741824 #  Maximum file size

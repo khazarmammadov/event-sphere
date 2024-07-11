@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -22,6 +23,6 @@ public class User {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "organization_id" , unique = true)
     private Organization organization;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     private int State;
 }

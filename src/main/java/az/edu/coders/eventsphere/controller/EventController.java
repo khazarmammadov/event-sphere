@@ -7,10 +7,15 @@ import az.edu.coders.eventsphere.model.dto.response.EventDetailsResponse;
 import az.edu.coders.eventsphere.model.dto.response.EventResponse;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import az.edu.coders.eventsphere.service.EventService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
 import java.util.List;
 
 @RestController
@@ -21,9 +26,10 @@ public class EventController {
 
     private final EventService eventService;
 
-    @PostMapping
-    public void saveEvent(@RequestBody CreatedEventRequest request) {
-        eventService.saveEvent(request);
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public void saveEvent(@RequestPart("data") CreatedEventRequest request,
+                          @RequestPart("file") MultipartFile file) {
+        eventService.saveEvent(request, file);
     }
 
     @GetMapping("/{id}")
@@ -50,6 +56,14 @@ public class EventController {
     @DeleteMapping("/{id}")
     public void deleteEvent(@PathVariable Long id) {
         eventService.deleteEvent(id);
+    }
+
+    @GetMapping(value = "/{id}/picture/show")
+    public ResponseEntity<byte[]> downloadPicture(@PathVariable Long id, HttpServletResponse response) throws Exception{
+        InputStream inputStream = eventService.getEventPictureById(id);
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(inputStream.readAllBytes());
     }
 
 }
