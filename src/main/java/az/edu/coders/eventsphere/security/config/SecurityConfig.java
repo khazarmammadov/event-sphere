@@ -49,8 +49,11 @@ public class SecurityConfig {
 
                     // Auth URLs
                     request.requestMatchers("/v1/auth/logout").authenticated();
-                    request.requestMatchers("/v1/auth/token/refresh").authenticated();
+                    //request.requestMatchers("/v1/auth/token/refresh").permitAll();
                     request.requestMatchers("/v1/auth/**").permitAll();
+                    //request.requestMatchers("/customers").permitAll();
+
+                    //request.requestMatchers("/customers").authenticated();
                     request.anyRequest().authenticated();
 
 

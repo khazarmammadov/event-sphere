@@ -135,4 +135,10 @@ public class EventServiceImpl implements EventService {
         eventRepository.save(event);
     }
 
+    @Override
+    public Event findEventById(Long eventId) {
+        return eventRepository.findEventById(eventId).orElseThrow(
+                () -> new RuntimeException("Event Not Found by given id: " + eventId));
+    }
+
 }

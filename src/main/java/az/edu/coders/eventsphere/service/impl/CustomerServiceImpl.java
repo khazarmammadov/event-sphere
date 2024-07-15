@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -62,6 +63,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found given by id: " + customerId));
 
+    }
+
+    @Override
+    public Customer getCustomersByUser(User user) {
+        return customerRepository.getCustomersByUser(user).orElseThrow(
+                () -> new RuntimeException("Customer not found given by id: " + user));
     }
 }
 

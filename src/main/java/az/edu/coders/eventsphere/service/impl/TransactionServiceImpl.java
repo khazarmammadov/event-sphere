@@ -11,6 +11,8 @@ import az.edu.coders.eventsphere.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
@@ -29,5 +31,10 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setCustomer(customer);
         transactionRepository.save(transaction);
 
+    }
+
+    @Override
+    public List<Transaction> getTransactionsByDate() {
+        return transactionRepository.findTop5ByOrderByDateDesc();
     }
 }
