@@ -37,4 +37,77 @@ public class TransactionServiceImpl implements TransactionService {
     public List<Transaction> getTransactionsByDate() {
         return transactionRepository.findTop5ByOrderByDateDesc();
     }
+
+    @Override
+    public Integer getCurrentMonthSalesWithStatus1() {
+        return transactionRepository.getCurrentMonthSalesWithStatus1();
+    }
+
+    @Override
+    public Integer getCountOfSoldTicketsFromPreviousMonth() {
+        return transactionRepository.getCountOfSoldTicketsFromPreviousMonth();
+    }
+
+    @Override
+    public double getMonthlyTicketSalesDifferenceWithPercentage() {
+        Integer currentMonthSales = getCurrentMonthSalesWithStatus1();
+
+        Integer previousMonthSales = getCountOfSoldTicketsFromPreviousMonth();
+
+        if (previousMonthSales == null || previousMonthSales == 0) {
+            return currentMonthSales != null ? 100.0 : 0.0;
+        }
+
+        double difference = currentMonthSales - previousMonthSales;
+        return (difference / previousMonthSales) * 100;
+    }
+
+    @Override
+    public Integer getCurrentMonthRefundWithStatus2() {
+        return transactionRepository.getCurrentMonthRefundWithStatus2();
+    }
+
+    @Override
+    public Integer getCountOfRefundTicketsFromPreviousMonth() {
+        return transactionRepository.getCountOfRefundTicketsFromPreviousMonth();
+    }
+
+
+    @Override
+    public double getMonthlyTicketRefundDifferenceWithPercentage() {
+        Integer currentMonthRefund = getCurrentMonthRefundWithStatus2();
+
+        Integer previousMonthRefund = getCountOfRefundTicketsFromPreviousMonth();
+
+        if (previousMonthRefund == null || previousMonthRefund == 0) {
+            return currentMonthRefund != null ? 100.0 : 0.0;
+        }
+
+        double difference = currentMonthRefund - previousMonthRefund;
+        return (difference / previousMonthRefund) * 100;
+    }
+
+    @Override
+    public Integer getMonthlyRevenue() {
+        return transactionRepository.getMonthlyRevenue();
+    }
+
+    @Override
+    public double getMonthlyRevenueDifferenceWithPercentage() {
+        Integer currentMonthRevenue = getMonthlyRevenue();
+
+        Integer previousMonthRevenue = getPreviousMonthlyRevenue();
+
+        if (previousMonthRevenue == null || currentMonthRevenue == 0) {
+            return currentMonthRevenue != null ? 100.0 : 0.0;
+        }
+
+        double difference = currentMonthRevenue - previousMonthRevenue;
+        return (difference / previousMonthRevenue) * 100;
+    }
+
+    private Integer getPreviousMonthlyRevenue() {
+        return transactionRepository.getPreviousMonthlyRevenue();
+    }
+
 }

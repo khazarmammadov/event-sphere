@@ -10,7 +10,7 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface TransactionMapper {
     @Mapping(target = "transactionDate", expression = "java(java.time.LocalDateTime.now())")
-    @Mapping(target = "status", expression = "java(az.edu.coders.eventsphere.enumurated.PaymentStatus.PENDING)")
+    @Mapping(target = "status", expression = "java(az.edu.coders.eventsphere.enumurated.PaymentStatus.PAID)")
     Transaction toEntity(CreatedTransactionRequest request);
 
 

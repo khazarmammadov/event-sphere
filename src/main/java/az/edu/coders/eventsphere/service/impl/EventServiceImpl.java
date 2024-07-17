@@ -1,5 +1,6 @@
 package az.edu.coders.eventsphere.service.impl;
 
+import az.edu.coders.eventsphere.entity.User;
 import az.edu.coders.eventsphere.model.dto.request.CreatedEventRequest;
 import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.model.dto.request.UpdatedEventRequest;
@@ -9,18 +10,24 @@ import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import az.edu.coders.eventsphere.mapper.EventMapper;
 import az.edu.coders.eventsphere.repository.EventRepository;
+import az.edu.coders.eventsphere.security.properties.LoggedInUserDetails;
 import az.edu.coders.eventsphere.service.EventService;
 import az.edu.coders.eventsphere.service.MinioService;
 import az.edu.coders.eventsphere.service.TransactionService;
 import io.minio.errors.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -48,6 +55,11 @@ public class EventServiceImpl implements EventService {
         try {
             minioService.putObject(file.getInputStream(), bucketName, fileName, "JPEG");
             event.setPicturePath(bucketName + "/" + fileName);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoggedInUserDetails principal = (LoggedInUserDetails) authentication.getPrincipal();
+            User user = new User();
+            user.setId(principal.getId());
+            event.setUser(user);
             eventRepository.save(event);
 
 
@@ -98,7 +110,7 @@ public class EventServiceImpl implements EventService {
         Event event = eventRepository.findById(request.getEventId())
                 .orElseThrow(() -> new RuntimeException("Event Not Found by given id: " + request.getEventId()));
         System.out.println("alma");
-        if (request.getQuantity() < event.getRestOfPlace()) {
+        if (request.getQuantity() <= event.getRestOfPlace()) {
             transactionService.createTransaction(event, request);
             updateRestOfPlace(event.getId(), request.getQuantity());
             System.out.println("alma");
@@ -139,6 +151,19 @@ public class EventServiceImpl implements EventService {
     public Event findEventById(Long eventId) {
         return eventRepository.findEventById(eventId).orElseThrow(
                 () -> new RuntimeException("Event Not Found by given id: " + eventId));
+    }
+
+    @Override
+    //@Scheduled(fixedRate = 600000)
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void updateEventStatus() {
+        LocalDate now = LocalDate.now();
+        List<Event> eventsToUpdate = eventRepository.findByEventDateBeforeAndStatus(now, EventStatus.ACTIVE);
+
+        for (Event event : eventsToUpdate) {
+            event.setStatus(EventStatus.DONE);
+            eventRepository.save(event);
+        }
     }
 
 }

@@ -20,7 +20,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "created_by", unique = true)
+    @JoinColumn(name = "created_by")
     private User user;
     private String name;
     private String description;
