@@ -1,6 +1,6 @@
 package az.edu.coders.eventsphere.service.impl;
 
-import az.edu.coders.eventsphere.model.dto.request.CreatedUserRequest;
+import az.edu.coders.eventsphere.model.request.CreatedUserRequest;
 import az.edu.coders.eventsphere.entity.User;
 import az.edu.coders.eventsphere.mapper.UserMapper;
 import az.edu.coders.eventsphere.repository.UserRepository;

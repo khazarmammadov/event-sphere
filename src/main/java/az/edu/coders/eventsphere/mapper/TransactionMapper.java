@@ -1,6 +1,6 @@
 package az.edu.coders.eventsphere.mapper;
 
-import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.entity.Transaction;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

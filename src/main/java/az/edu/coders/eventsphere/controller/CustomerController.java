@@ -1,10 +1,9 @@
 package az.edu.coders.eventsphere.controller;
 
-import az.edu.coders.eventsphere.model.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.model.request.CreatedCustomerRequest;
 import az.edu.coders.eventsphere.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

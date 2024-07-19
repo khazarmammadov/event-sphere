@@ -2,7 +2,7 @@ package az.edu.coders.eventsphere.security.service.impl;
 
 
 import az.edu.coders.eventsphere.entity.User;
-import az.edu.coders.eventsphere.model.dto.request.CreatedUserRequest;
+import az.edu.coders.eventsphere.model.request.CreatedUserRequest;
 import az.edu.coders.eventsphere.security.dto.RefreshTokenDto;
 import az.edu.coders.eventsphere.security.manager.AccessTokenManager;
 import az.edu.coders.eventsphere.security.manager.RefreshTokenManager;

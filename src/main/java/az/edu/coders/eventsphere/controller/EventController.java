@@ -1,11 +1,11 @@
 package az.edu.coders.eventsphere.controller;
 
-import az.edu.coders.eventsphere.model.dto.request.CreatedEventRequest;
-import az.edu.coders.eventsphere.model.dto.request.CreatedReviewRequest;
-import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
-import az.edu.coders.eventsphere.model.dto.request.UpdatedEventRequest;
-import az.edu.coders.eventsphere.model.dto.response.EventDetailsResponse;
-import az.edu.coders.eventsphere.model.dto.response.EventResponse;
+import az.edu.coders.eventsphere.model.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.model.request.CreatedReviewRequest;
+import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.model.request.UpdatedEventRequest;
+import az.edu.coders.eventsphere.model.response.EventDetailsResponse;
+import az.edu.coders.eventsphere.model.response.EventResponse;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import az.edu.coders.eventsphere.service.EventService;
 import az.edu.coders.eventsphere.service.ReviewService;
@@ -27,7 +27,7 @@ public class EventController {
     private final EventService eventService;
     private final ReviewService reviewService;
 
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_OCTET_STREAM_VALUE })
     public void saveEvent(@RequestPart("data") CreatedEventRequest request,
                           @RequestPart("file") MultipartFile file) {
         eventService.saveEvent(request, file);

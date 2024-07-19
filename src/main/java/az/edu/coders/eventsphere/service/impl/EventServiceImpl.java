@@ -1,11 +1,11 @@
 package az.edu.coders.eventsphere.service.impl;
 
 import az.edu.coders.eventsphere.entity.User;
-import az.edu.coders.eventsphere.model.dto.request.CreatedEventRequest;
-import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
-import az.edu.coders.eventsphere.model.dto.request.UpdatedEventRequest;
-import az.edu.coders.eventsphere.model.dto.response.EventDetailsResponse;
-import az.edu.coders.eventsphere.model.dto.response.EventResponse;
+import az.edu.coders.eventsphere.model.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.model.request.UpdatedEventRequest;
+import az.edu.coders.eventsphere.model.response.EventDetailsResponse;
+import az.edu.coders.eventsphere.model.response.EventResponse;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import az.edu.coders.eventsphere.mapper.EventMapper;
@@ -14,7 +14,6 @@ import az.edu.coders.eventsphere.security.properties.LoggedInUserDetails;
 import az.edu.coders.eventsphere.service.EventService;
 import az.edu.coders.eventsphere.service.MinioService;
 import az.edu.coders.eventsphere.service.TransactionService;
-import io.minio.errors.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,10 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -50,7 +46,7 @@ public class EventServiceImpl implements EventService {
 
 
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-        String fileName = UUID.randomUUID().toString() + "." + extension;
+        String fileName = UUID.randomUUID() + "." + extension;
 
         try {
             minioService.putObject(file.getInputStream(), bucketName, fileName, "JPEG");

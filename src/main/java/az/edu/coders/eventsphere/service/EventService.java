@@ -1,18 +1,17 @@
 package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.entity.Event;
-import az.edu.coders.eventsphere.model.dto.request.CreatedEventRequest;
-import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
-import az.edu.coders.eventsphere.model.dto.request.UpdatedEventRequest;
-import az.edu.coders.eventsphere.model.dto.response.EventDetailsResponse;
-import az.edu.coders.eventsphere.model.dto.response.EventResponse;
+import az.edu.coders.eventsphere.model.request.CreatedEventRequest;
+import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.model.request.UpdatedEventRequest;
+import az.edu.coders.eventsphere.model.response.EventDetailsResponse;
+import az.edu.coders.eventsphere.model.response.EventResponse;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Optional;
 
 public interface EventService {
     void saveEvent(CreatedEventRequest request, MultipartFile file);

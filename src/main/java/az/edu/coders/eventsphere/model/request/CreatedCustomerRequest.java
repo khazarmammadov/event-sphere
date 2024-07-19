@@ -1,4 +1,4 @@
-package az.edu.coders.eventsphere.model.dto.request;
+package az.edu.coders.eventsphere.model.request;
 
 import az.edu.coders.eventsphere.entity.User;
 import jakarta.persistence.*;
@@ -15,4 +15,6 @@ public class CreatedCustomerRequest {
     private String country;
     private String phone_number;
     private String address;
+
+    
 }

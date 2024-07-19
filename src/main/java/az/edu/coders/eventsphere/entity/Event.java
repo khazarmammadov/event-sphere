@@ -3,6 +3,8 @@ package az.edu.coders.eventsphere.entity;
 import az.edu.coders.eventsphere.enumurated.EventStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,5 +37,6 @@ public class Event {
     private LocalDate createdAt;
     @Enumerated(EnumType.ORDINAL)
     private EventStatus status;
+    
 
 }

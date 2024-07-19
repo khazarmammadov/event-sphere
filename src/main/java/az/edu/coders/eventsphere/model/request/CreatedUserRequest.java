@@ -1,4 +1,4 @@
-package az.edu.coders.eventsphere.model.dto.request;
+package az.edu.coders.eventsphere.model.request;
 
 import az.edu.coders.eventsphere.entity.Organization;
 import jakarta.persistence.CascadeType;

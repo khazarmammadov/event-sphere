@@ -1,6 +1,6 @@
 package az.edu.coders.eventsphere.controller;
 
-import az.edu.coders.eventsphere.model.dto.request.CreatedOrganizationRequest;
+import az.edu.coders.eventsphere.model.request.CreatedOrganizationRequest;
 import az.edu.coders.eventsphere.entity.Organization;
 import az.edu.coders.eventsphere.service.OrganizationService;
 import lombok.RequiredArgsConstructor;

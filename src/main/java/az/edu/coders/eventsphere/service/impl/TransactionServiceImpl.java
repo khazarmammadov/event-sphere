@@ -1,6 +1,6 @@
 package az.edu.coders.eventsphere.service.impl;
 
-import az.edu.coders.eventsphere.model.dto.request.CreatedTransactionRequest;
+import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Transaction;

@@ -1,7 +1,7 @@
 package az.edu.coders.eventsphere.service.impl;
 
 import az.edu.coders.eventsphere.entity.User;
-import az.edu.coders.eventsphere.model.dto.request.CreatedCustomerRequest;
+import az.edu.coders.eventsphere.model.request.CreatedCustomerRequest;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.mapper.CustomerMapper;
 import az.edu.coders.eventsphere.repository.CustomerRepository;
@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

@@ -4,7 +4,7 @@ import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Review;
 import az.edu.coders.eventsphere.entity.User;
 import az.edu.coders.eventsphere.mapper.ReviewMapper;
-import az.edu.coders.eventsphere.model.dto.request.CreatedReviewRequest;
+import az.edu.coders.eventsphere.model.request.CreatedReviewRequest;
 import az.edu.coders.eventsphere.repository.ReviewRepository;
 import az.edu.coders.eventsphere.security.properties.LoggedInUserDetails;
 import az.edu.coders.eventsphere.service.EventService;
