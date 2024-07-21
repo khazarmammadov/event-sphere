@@ -19,7 +19,7 @@ public class BillingDetails {
     private boolean byCard;
     private int cardNumber;
     private String email;
-    private String phone_number;
+    private String phoneNumber;
     private String address;
 
 }

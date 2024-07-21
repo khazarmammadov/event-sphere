@@ -1,11 +1,14 @@
 package az.edu.coders.eventsphere.service.impl;
 
+import az.edu.coders.eventsphere.entity.BillingDetails;
+import az.edu.coders.eventsphere.model.request.CreatedBillingDetailsRequest;
 import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Transaction;
 import az.edu.coders.eventsphere.mapper.TransactionMapper;
 import az.edu.coders.eventsphere.repository.TransactionRepository;
+import az.edu.coders.eventsphere.service.BillingDetailsService;
 import az.edu.coders.eventsphere.service.CustomerService;
 import az.edu.coders.eventsphere.service.TransactionService;
 import lombok.RequiredArgsConstructor;
@@ -20,17 +23,34 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     private final TransactionMapper transactionMapper;
     private final CustomerService customerService;
+    private final BillingDetailsService billingDetailsService;
 
     @Override
     public void createTransaction(Event event, CreatedTransactionRequest request) {
+
         Customer customer = customerService.getEntityById(request.getCustomerId());
         Transaction transaction = transactionMapper.toEntity(request);
+
         double totalPrice = event.getTicketPrice() * request.getQuantity();
+
         transaction.setTotalPrice(totalPrice);
         transaction.setEvent(event);
         transaction.setCustomer(customer);
+
+        BillingDetails billingDetails = newBilling();
+        billingDetails.setEmail(customer.getEmail());
+        billingDetails.setPhoneNumber(customer.getPhoneNumber());
+        billingDetails.setAddress(customer.getAddress());
+        billingDetails.setUserId(customer.getId());
+
+        transaction.setBillingDetails(billingDetails);
+
         transactionRepository.save(transaction);
 
+    }
+
+    public BillingDetails newBilling() {
+        return billingDetailsService.createDetails();
     }
 
     @Override

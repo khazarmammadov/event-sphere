@@ -25,7 +25,7 @@ public class Customer {
     private String lastName;
     private String email;
     private String country;
-    private String phone_number;
+    private String phoneNumber;
     private String address;
     private String picturePath;
 }

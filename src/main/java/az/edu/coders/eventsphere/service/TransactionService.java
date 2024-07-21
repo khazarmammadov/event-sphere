@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.service;
 
 import az.edu.coders.eventsphere.entity.Transaction;
+import az.edu.coders.eventsphere.model.request.CreatedBillingDetailsRequest;
 import az.edu.coders.eventsphere.model.request.CreatedTransactionRequest;
 import az.edu.coders.eventsphere.entity.Event;
 
@@ -17,4 +18,5 @@ public interface TransactionService {
     Integer getCountOfRefundTicketsFromPreviousMonth();
     Integer getMonthlyRevenue();
     double getMonthlyRevenueDifferenceWithPercentage();
+
 }
