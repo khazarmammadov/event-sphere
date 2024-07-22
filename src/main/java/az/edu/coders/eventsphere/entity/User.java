@@ -1,5 +1,7 @@
 package az.edu.coders.eventsphere.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String mail;
+    @JsonIgnore
     private String password;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "organization_id" , unique = true)

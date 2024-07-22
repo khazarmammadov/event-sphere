@@ -2,6 +2,8 @@ package az.edu.coders.eventsphere.controller;
 
 import az.edu.coders.eventsphere.entity.Transaction;
 
+import az.edu.coders.eventsphere.model.response.TransactionDetailsResponse;
+import az.edu.coders.eventsphere.model.response.TransactionDetailsResponseForDashboard;
 import az.edu.coders.eventsphere.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,7 @@ public class DashBoardController {
     private final TransactionService transactionService;
 
     @GetMapping
-    public List<Transaction> getTransactionByDate() {
+    public List<TransactionDetailsResponseForDashboard> getTransactionByDate() {
         return transactionService.getTransactionsByDate();
     }
 

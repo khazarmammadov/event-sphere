@@ -1,6 +1,7 @@
 package az.edu.coders.eventsphere.repository;
 
 import az.edu.coders.eventsphere.entity.Transaction;
+import az.edu.coders.eventsphere.model.response.TransactionDetailsResponseForDashboard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

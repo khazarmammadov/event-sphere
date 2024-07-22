@@ -35,4 +35,14 @@ public interface EventMapper {
     }
 
     EventResponse toEventResponse(Event event);
+
+    @AfterMapping
+    default void afterMap2(@MappingTarget EventResponse result, Event event) {
+        String sellingPeriod = event.getTicketSellingStartDate().toString() +
+                " --> " + event.getTicketSellingStopDate().toString();
+        result.setTicketSellingPeriod(sellingPeriod);
+
+
+
+    }
 }

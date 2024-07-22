@@ -7,6 +7,7 @@ import az.edu.coders.eventsphere.entity.Customer;
 import az.edu.coders.eventsphere.entity.Event;
 import az.edu.coders.eventsphere.entity.Transaction;
 import az.edu.coders.eventsphere.mapper.TransactionMapper;
+import az.edu.coders.eventsphere.model.response.TransactionDetailsResponseForDashboard;
 import az.edu.coders.eventsphere.repository.TransactionRepository;
 import az.edu.coders.eventsphere.service.BillingDetailsService;
 import az.edu.coders.eventsphere.service.CustomerService;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -54,8 +56,13 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getTransactionsByDate() {
-        return transactionRepository.findTop5ByOrderByDateDesc();
+    public List<TransactionDetailsResponseForDashboard> getTransactionsByDate() {
+
+        List<Transaction> transactions = transactionRepository.findTop5ByOrderByDateDesc();
+
+        return transactions.stream()
+                .map(transactionMapper::toTransactionResponse)
+                .collect(Collectors.toList());
     }
 
     @Override

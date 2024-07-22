@@ -1,5 +1,6 @@
 package az.edu.coders.eventsphere.model.response;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
